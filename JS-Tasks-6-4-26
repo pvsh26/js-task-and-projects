@@ -1,0 +1,73 @@
+//It's the academic year's end, fateful moment of your school report. The averages must be calculated. 
+//All the students come to you and entreat you to calculate their average for them. Easy ! You just need to write a script.
+
+//Return the average of the given array rounded down to its nearest integer.
+
+//The array will never be empty.
+
+marks = [1,2,3,4,5]
+function getAverage(marks) {
+  const avg = (numbers) => numbers.reduce((acc, number) => acc + number, 0) / numbers.length;
+  return Math.floor(avg(marks));
+}
+
+//The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+//What if the string is empty? Then the result should be empty object literal, {}.
+let abc = 'asjfnbsaskhjf'
+
+function count(string) {
+  const letters = string.split("");
+  const lettersCount = letters.reduce((acc,item) => {
+    acc[item] = (acc[item] || 0) +1;
+    return acc;
+  }, {});
+  return lettersCount;
+}
+
+let result = abc.letcount();
+console.log(result);
+
+//You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+
+function sortArray(array) {
+  const odds = arr.filter(n => n % 2 !== 0).sort((a, b) => a - b);
+  let index = 0;
+  const result = arr.map(n => n % 2 !== 0 ? odds[index++] : n);
+  return result;
+}
+
+//In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+//If anything in the text isn't a letter, ignore it and don't return it.
+
+//"a" = 1, "b" = 2, etc.
+
+function alphabetPosition(text) {
+  const alphabetCount = {};
+  for (let i = 0; i < 26; i++) {
+    const char = String.fromCharCode(97 + i);
+    alphabetCount[char] = i + 1;
+  }
+  const lettersOnly = text.split("");
+  const clearText = lettersOnly.map(str => str.replace(/[^a-zA-Z]/g, ""));
+  const result = clearText
+    .filter(item => item !== "")
+    .map(item => alphabetCount[item.toLowerCase()]);
+  const str = result.join(' ')
+  return str;
+}
+
+
+//Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+
+// url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+// url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
+// url = "https://www.cnet.com"                -> domain name = cnet"
+
+function domainName(url) {
+  url = url.replace(/^.*:\/\//, ''); //<-- нагуглил вот это и не до конца понимаю синтаксис
+  url = url.replace(/^www\./, '');
+  return url.split('.')[0];
+}
+
